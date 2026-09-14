@@ -3,789 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدليل التفاعلي الذكي لمنسوبات مدارس بواكير</title>
-    <!-- Google Fonts: Tajawal -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <title>البوابة الذكية - مدارس بواكير الأهلية</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-burgundy: #5c061c;
-            --secondary-burgundy: #7a0925;
-            --gold-accent: #d4af37;
-            --text-dark: #2c3e50;
-            --text-muted: #596575;
-            --bg-body: #f8fafc;
-            --white: #ffffff;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 10px 25px -5px rgba(92, 6, 28, 0.12);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* Pastel Theme Categories */
-            --cat1-bg: #fdf2f4;
-            --cat1-border: #f8cecc;
-            --cat1-icon: #b85450;
-            
-            --cat2-bg: #f0f7ff;
-            --cat2-border: #cce5ff;
-            --cat2-icon: #004085;
-            
-            --cat3-bg: #f4fbf7;
-            --cat3-border: #d4edda;
-            --cat3-icon: #155724;
-            
-            --cat4-bg: #fffbf0;
-            --cat4-border: #ffeeba;
-            --cat4-icon: #856404;
+            --primary-pastel: #e0f2fe;
+            --primary-dark: #0369a1;
+            --secondary-pastel: #fbcfe8;
+            --accent-gold: #d97706;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
 
         body {
-            background-color: var(--bg-body);
-            color: var(--text-dark);
+            background-color: var(--bg-light);
+            color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
         /* Header Styling */
         header {
-            background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--secondary-burgundy) 100%);
-            color: var(--white);
-            padding: 35px 20px 45px 20px;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: white;
+            padding: 40px 20px 30px;
             text-align: center;
-            border-bottom: 5px solid var(--gold-accent);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 30px;
+            position: relative;
         }
 
-        .header-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.12);
-            padding: 6px 18px;
-            border-radius: 30px;
-            margin-bottom: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .header-brand i { color: #ffd700; font-size: 1.1rem; }
-        .header-brand span { font-size: 0.95rem; font-weight: 500; }
-
-        header h1 {
-            font-size: 1.9rem;
+        .header-content h1 {
+            font-size: 2.2rem;
             font-weight: 800;
             margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
-        header p {
-            font-size: 1rem;
+        .header-content p {
+            font-size: 1.1rem;
             opacity: 0.9;
-            font-weight: 400;
+            font-weight: 600;
         }
 
-        /* Container Layout */
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Welcome Card */
-        .welcome-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 28px 30px;
-            margin-top: -30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid #eef2f7;
-            border-right: 6px solid var(--primary-burgundy);
-            position: relative;
-            z-index: 10;
-        }
-
-        .welcome-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--primary-burgundy);
-            margin-bottom: 12px;
-        }
-
-        .welcome-header i { font-size: 1.5rem; color: var(--gold-accent); }
-        .welcome-header h2 { font-size: 1.3rem; font-weight: 700; }
-
-        .welcome-text {
-            font-size: 1rem;
-            color: var(--text-dark);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .signatures-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            padding-top: 15px;
-            border-top: 2px dashed #edf2f7;
-            margin-top: 15px;
-        }
-
-        .sig-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--primary-burgundy);
-            background: #fdf8f9;
-            padding: 8px 16px;
-            border-radius: 10px;
-            border: 1px solid #f5e6e8;
-        }
-
-        .sig-box i { color: var(--gold-accent); }
-
-        /* Search Box */
+        /* Search Section */
         .search-container {
             margin-bottom: 35px;
             position: relative;
-        }
-
-        .search-box {
-            position: relative;
             max-width: 600px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .search-box input {
+        .search-input {
             width: 100%;
-            padding: 16px 50px 16px 20px;
+            padding: 16px 20px 16px 50px;
+            border-radius: 50px;
+            border: 2px solid var(--border-color);
             font-size: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 14px;
-            background-color: var(--white);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
             outline: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            background-color: white;
         }
 
-        .search-box input:focus {
-            border-color: var(--primary-burgundy);
-            box-shadow: 0 0 0 4px rgba(92, 6, 28, 0.1);
+        .search-input:focus {
+            border-color: #0284c7;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
         }
 
-        .search-box i {
+        .search-icon {
             position: absolute;
-            right: 18px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
             font-size: 1.2rem;
         }
 
-        /* Section Category Titles */
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--primary-burgundy);
-            margin: 35px 0 20px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        /* Grid Dashboard Layout */
-        .grid-dashboard {
+        /* Grid System */
+        .portal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 20px;
-            margin-bottom: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
 
-        /* Card Item */
-        .card-item {
-            border-radius: 16px;
-            padding: 22px;
+        /* Card Component */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            text-decoration: none;
-            color: var(--text-dark);
-            transition: var(--transition);
-            border: 1px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
         }
 
-        .card-item:hover {
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: var(--shadow-lg);
         }
 
-        .card-top {
+        .card-header {
             display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            margin-bottom: 12px;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
         .card-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            margin-left: 15px;
             flex-shrink: 0;
-            background: var(--white);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
         }
+
+        /* Pastel Accent Themes */
+        .theme-blue .card-icon { background-color: #e0f2fe; color: #0284c7; }
+        .theme-pink .card-icon { background-color: #fce7f3; color: #db2777; }
+        .theme-purple .card-icon { background-color: #f3e8ff; color: #9333ea; }
+        .theme-amber .card-icon { background-color: #fef3c7; color: #d97706; }
+        .theme-emerald .card-icon { background-color: #d1fae5; color: #059669; }
 
         .card-title {
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            line-height: 1.4;
+            color: var(--text-main);
         }
 
-        .card-desc {
-            font-size: 0.88rem;
+        .card-description {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
-        .card-footer-btn {
+        /* Multi-link Action Container */
+        .card-actions {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding-top: 10px;
-            border-top: 1px dashed rgba(0,0,0,0.08);
-            color: var(--primary-burgundy);
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
         }
 
-        /* Category Color Themes */
-        .theme-cat1 { background: var(--cat1-bg); border-color: var(--cat1-border); }
-        .theme-cat1 .card-icon { color: var(--cat1-icon); }
-
-        .theme-cat2 { background: var(--cat2-bg); border-color: var(--cat2-border); }
-        .theme-cat2 .card-icon { color: var(--cat2-icon); }
-
-        .theme-cat3 { background: var(--cat3-bg); border-color: var(--cat3-border); }
-        .theme-cat3 .card-icon { color: var(--cat3-icon); }
-
-        .theme-cat4 { background: var(--cat4-bg); border-color: var(--cat4-border); }
-        .theme-cat4 .card-icon { color: var(--cat4-icon); }
-
-        /* Modal / Instructions Styling */
-        .details-btn {
-            background: var(--white);
-            border: 1px solid var(--cat1-border);
-            color: var(--primary-burgundy);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            margin-top: 8px;
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            transition: var(--transition);
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease, opacity 0.2s ease;
         }
 
-        .details-btn:hover { background: var(--primary-burgundy); color: var(--white); }
-
-        .instructions-content {
-            display: none;
-            background: var(--white);
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 0.82rem;
-            margin-top: 10px;
-            border: 1px solid #eee;
-            color: #444;
+        .btn-primary {
+            background-color: #0284c7;
+            color: white;
         }
 
-        /* No Results */
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
-            display: none;
-            font-size: 1rem;
+        .btn-primary:hover {
+            background-color: #0369a1;
         }
 
-        /* Footer */
+        .btn-secondary {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Footer / Sign-off */
         footer {
+            margin-top: 60px;
             text-align: center;
-            margin-top: 50px;
             padding: 20px;
             color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
         }
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.5rem; }
-            .grid-dashboard { grid-template-columns: 1fr; }
-            .signatures-area { flex-direction: column; align-items: flex-start; }
+        .leadership-signature {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .header-content h1 { font-size: 1.75rem; }
+            .portal-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Header without icon -->
     <header>
-        <div class="header-brand">
-            <i class="fa-solid fa-school"></i>
-            <span>مدارس بواكير الأهلية - فرع الروابي</span>
+        <div class="header-content">
+            <h1>مدارس بواكير الأهلية - فرع الروابي</h1>
+            <p>البوابة الذكية للموارد والخدمات التفاعلية</p>
         </div>
-        <h1>الدليل التفاعلي الذكي لمنسوبات مدارس بواكير</h1>
-        <p>البوابة الرقمية الشاملة للسجلات والخدمات التعليمية والإدارية</p>
     </header>
 
     <div class="container">
-        
-        <!-- Welcome Card -->
-        <div class="welcome-card">
-            <div class="welcome-header">
-                <i class="fa-solid fa-star"></i>
-                <h2>أهلاً بكِ في واحة التميز والعطاء.. معلمتنا القديرة</h2>
-            </div>
-            <p class="welcome-text">
-                لأنكِ صانعة الأثر، ومربية الأجيال، وأساس كل نجاح يتحقق في مجتمعنا التعليمي؛ يسرّنا أن نضع بين يديكِ <strong>الدليل التفاعلي الذكي لمنسوبات مدارس بواكير</strong>.<br>
-                <strong>الهدف من إنشاء هذه البوابة:</strong> صُممت هذه المنصة لتكون مرجعكِ الموحد والشامل، بهدف تسهيل وصولكِ لكافة السجلات، الخطط الدراسية، والأدلة التنظيمية بكل سرعة ويسر، وتوفير بيئة عمل رقمية متكاملة تدعم جهودكِ العظيمة وتُمكّنكِ من أداء رسالتكِ السامية بكل إتقان وانسيابية.
-            </p>
-            <div class="signatures-area">
-                <div class="sig-box">
-                    <i class="fa-solid fa-pen-nib"></i>
-                    <span>وكيلة الشؤون التعليمية: بدرية محمد العتيبي</span>
-                </div>
-                <div class="sig-box">
-                    <i class="fa-solid fa-signature"></i>
-                    <span>مديرة المدرسة: ريم الدوسري</span>
-                </div>
-            </div>
-        </div>
-
         <!-- Search Bar -->
         <div class="search-container">
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" onkeyup="filterDashboard()" placeholder="ابحثي عن أي قسم، ملف، أو خدمة هنا...">
-            </div>
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن الخدمة أو الملف المطلوب..." onkeyup="filterCards()">
         </div>
 
-        <div id="dashboardContent">
-            
-            <!-- Category 1 -->
-            <div class="category-group">
-                <div class="category-header">
-                    <i class="fa-solid fa-building-user"></i>
-                    <span>🏛️ الشؤون الإدارية والتنظيمية</span>
-                </div>
-                <div class="grid-dashboard">
-                    
-                    <!-- 1. موقع الطفولة -->
-                    <div class="card-item theme-cat1">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-child"></i></div>
-                                <div class="card-title">1. موقع الطفولة</div>
-                            </div>
-                            <div class="card-desc">
-                                طريقة الدخول إلى (موقع الطفولة) عبر الرابط المباشر أو التطبيق للاستفادة من الخدمات الوظيفية.
-                                <br>
-                                <button class="details-btn" onclick="toggleDetails('instruct1')">
-                                    <i class="fa-solid fa-circle-info"></i> عرض تعليمات الدخول والتطبيق
-                                </button>
-                                <div class="instructions-content" id="instruct1">
-                                    <strong>خدمات الموقع والتطبيق:</strong>
-                                    <ul>
-                                        <li>إضافة أعذار الغياب والرد على المساءلات</li>
-                                        <li>تقديم طلب استئذان صباحي أو مسائي</li>
-                                        <li>استعراض مسير الرواتب والبيانات الشخصية</li>
-                                    </ul>
-                                    <hr style="margin:6px 0;">
-                                    <strong>خطوات التطبيق:</strong> تنزيل (تطبيق الموظف) ثم إدخال رابط الشركة المعتمد.
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://altofula.esol.dev/" target="_blank" style="text-decoration:none;">
-                            <div class="card-footer-btn">
-                                <span>الانتقال للموقع</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </a>
+        <!-- Main Cards Grid -->
+        <div class="portal-grid" id="portalGrid">
+
+            <!-- CARD: التعاميم والقرارات -->
+            <div class="card theme-amber">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-bullhorn"></i>
                     </div>
-
-                    <!-- 2. أحوال الموظفات 1448 -->
-                    <a href="https://drive.google.com/drive/folders/1g1-sDLMVtn5TT2a0qwz6T1dDMT312oIx?usp=drive_link" target="_blank" class="card-item theme-cat1">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-user-lock"></i></div>
-                                <div class="card-title">2. أحوال الموظفات 1448</div>
-                            </div>
-                            <div class="card-desc">شامل لجميع المعلومات الخاصة بالموظفات بسرية تامة.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>فتح المجلد</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
+                    <h2 class="card-title">التعاميم والقرارات</h2>
+                </div>
+                <p class="card-description">متابعة التعاميم العامة والداخلية الخاصة بالعملية التعليمية والإدارية.</p>
+                <div class="card-actions">
+                    <a href="https://docs.google.com/spreadsheets/d/1v8AqltUihIHVzRV_hiPH17lSEvfDi5kpQks2AZfWy6A/edit?gid=0#gid=0" target="_blank" class="btn btn-primary">
+                        <i class="fa-solid fa-file-excel"></i> التعاميم العامة
                     </a>
-
-                    <!-- 3. التعاميم 1448هـ -->
-                    <a href="https://drive.google.com/drive/folders/1fLOj1LrKcuO8cJaJnjIyBnJF7WOA25R_?usp=drive_link" target="_blank" class="card-item theme-cat1">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-folder-open"></i></div>
-                                <div class="card-title">3. التعاميم 1448هـ</div>
-                            </div>
-                            <div class="card-desc">الأرشيف الرقمي للتعاميم الإدارية الصادرة.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>فتح التعاميم</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
+                    <a href="https://drive.google.com/drive/folders/1fLOj1LrKcuO8cJaJnjIyBnJF7WOA25R_" target="_blank" class="btn btn-secondary">
+                        <i class="fa-solid fa-folder-open"></i> التعاميم الداخلية
                     </a>
-
-                    <!-- 4. ميثاق أخلاقيات مهنة التعليم -->
-                    <a href="https://drive.google.com/drive/folders/1DRkk8tixQcTZ8kBlnExuyzNM7loHTc1k?usp=drive_link" target="_blank" class="card-item theme-cat1">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-award"></i></div>
-                                <div class="card-title">4. ميثاق أخلاقيات مهنة التعليم</div>
-                            </div>
-                            <div class="card-desc">المبادئ والقيم المهنية والسلوك الوظيفي المعتمد.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>استعراض الميثاق</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
                 </div>
             </div>
 
-            <!-- Category 2 -->
-            <div class="category-group">
-                <div class="category-header">
-                    <i class="fa-solid fa-school-flag"></i>
-                    <span>🏫 التنظيم المدرسي</span>
+            <!-- Existing Portal Cards -->
+            <div class="card theme-blue">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h2 class="card-title">الجدول المدرسي والحصص</h2>
                 </div>
-                <div class="grid-dashboard">
-                    
-                    <!-- 5. أسماء الطلاب 1448 -->
-                    <a href="https://drive.google.com/drive/folders/1KRYnDidTcmFnqwnPrb3Fs0mmQTK2AGo8?usp=drive_link" target="_blank" class="card-item theme-cat2">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-users"></i></div>
-                                <div class="card-title">5. أسماء الطلاب لعام 1448هـ</div>
-                            </div>
-                            <div class="card-desc">القوائم المعتمدة لأسماء الطلاب وتوزيع الفصول محدث.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>عرض القوائم</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 6. الجدول الزمني وجدول الحصص -->
-                    <a href="https://drive.google.com/drive/folders/13DKWgmvJsQnrs63enoWskc5aqjUK5gWA?usp=drive_link" target="_blank" class="card-item theme-cat2">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                                <div class="card-title">6. الجدول الزمني وجدول الحصص</div>
-                            </div>
-                            <div class="card-desc">خطة التوزيع الزمني للحصص الدراسية والأنشطة المدرسية وجدول الحصص.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>فتح الجدول</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 7. المناوبة والإشراف اليومي -->
-                    <a href="https://docs.google.com/spreadsheets/d/1hSI8XGjsBrTsvTR-ntHZNTTwUfw5dqamzlcSDNgGwAc/edit?usp=drive_link" target="_blank" class="card-item theme-cat2">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                                <div class="card-title">7. المناوبة والإشراف اليومي</div>
-                            </div>
-                            <div class="card-desc">جدول تنظيم المناوبة اليومية وتوزيع مهام الإشراف المدرسي.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>فتح الجدول الرقمي</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 8. سجل الانتظار -->
-                    <a href="https://drive.google.com/drive/folders/1sIPC_qmGmmRgIbxNcgy-RrlPreLK05TK?usp=drive_link" target="_blank" class="card-item theme-cat2">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-user-clock"></i></div>
-                                <div class="card-title">8. سجل الانتظار</div>
-                            </div>
-                            <div class="card-desc">تنظيم وتوثيق تغطية حصص الانتظار اليومية للمعلمات وتسديد الحصص في بنك الاحتياط.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>فتح السجل</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
+                <p class="card-description">الاطلاع على الجداول الدراسية، توزيع الحصص، والإشراف اليومي.</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> عرض الجدول</a>
                 </div>
             </div>
 
-            <!-- Category 3 -->
-            <div class="category-group">
-                <div class="category-header">
-                    <i class="fa-solid fa-book-bookmark"></i>
-                    <span>📚 التخطيط والمتابعة التعليمية</span>
+            <div class="card theme-pink">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h2 class="card-title">برنامج التميز السلوكي</h2>
                 </div>
-                <div class="grid-dashboard">
-                    
-                    <!-- 9. توزيع المنهج 1448 -->
-                    <a href="https://drive.google.com/drive/folders/1CjVbfWdfl_6zvuiXzeVsAJ2iDC-IYIFw?usp=drive_link" target="_blank" class="card-item theme-cat3">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
-                                <div class="card-title">9. توزيع المنهج 1448</div>
-                            </div>
-                            <div class="card-desc">الخطة الزمنية المعتمدة لتوزيع مفردات المناهج على أسابيع الفصل.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>عرض الخطط</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 10. الخطة الأسبوعية والواجبات اليومية -->
-                    <a href="https://drive.google.com/drive/folders/1GsVp2gOKbVz4hLXn_2bTDDP9WWHmFwGP?usp=drive_link" target="_blank" class="card-item theme-cat3">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
-                                <div class="card-title">10. الخطة الأسبوعية والواجبات اليومية</div>
-                            </div>
-                            <div class="card-desc">التكليفات والواجبات اليومية والخطط الأسبوعية.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>متابعة الخطط</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 11. ملف المتابعة 1448هـ -->
-                    <a href="https://drive.google.com/drive/folders/1kk8W5ai0AjEa067soTw7O76InNnPDe-Y?usp=drive_link" target="_blank" class="card-item theme-cat3">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-file-circle-check"></i></div>
-                                <div class="card-title">11. ملف المتابعة 1448هـ</div>
-                            </div>
-                            <div class="card-desc">متابعة الكتب والملازم وسجلات الإنجاز للطلاب، ومتابعة الطابور الصباحي ومنصة كلاسيرا.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>فتح السجل</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 12. الاختبارات الفترية 1448هـ -->
-                    <a href="https://drive.google.com/drive/folders/1ENDB53lDCsu0WCzc3nBFefZf0A3R5AK0?usp=drive_link" target="_blank" class="card-item theme-cat3">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-pen-ruler"></i></div>
-                                <div class="card-title">12. الاختبارات الفترية 1448هـ</div>
-                            </div>
-                            <div class="card-desc">جداول الاختبارات والأسئلة.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>فتح نماذج الاختبارات</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 13. استمارة تحويل للوكيلة الطلابية -->
-                    <a href="https://drive.google.com/drive/folders/1ippDO0LJdk5qIpeYAxvAn1HLGTnlJryT?usp=drive_link" target="_blank" class="card-item theme-cat3">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-share-from-square"></i></div>
-                                <div class="card-title">13. استمارة تحويل للوكيلة الطلابية</div>
-                            </div>
-                            <div class="card-desc">نموذج إلكتروني لتحويل الحالات الطلابية والإحالات الإدارية والتربوية.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>تعبئة الاستمارة</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
+                <p class="card-description">رصد وتكريم الطلاب المتميزين وإدارة نقاط السلوك الإيجابي.</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح البرنامج</a>
                 </div>
             </div>
 
-            <!-- Category 4 -->
-            <div class="category-group">
-                <div class="category-header">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <span>🌟 التطوير المهني والجودة</span>
+            <div class="card theme-purple">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h2 class="card-title">سجل الزيارات والتقييم</h2>
                 </div>
-                <div class="grid-dashboard">
-                    
-                    <!-- 14. التطوير المهني -->
-                    <a href="https://drive.google.com/drive/folders/1tevISFIgoLvB_CXNmWnCp4xaARC5M6CR?usp=drive_link" target="_blank" class="card-item theme-cat4">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-                                <div class="card-title">14. التطوير المهني</div>
-                            </div>
-                            <div class="card-desc">البرامج التدريبية للكادر التعليمي ومتابعة النمو المهني.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>استعراض البرامج</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
+                <p class="card-description">منظومة التقييم الرقمية لمتابعة الأداء التدريسي والزيارات الصفية.</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> الانتقال للسجل</a>
+                </div>
+            </div>
 
-                    <!-- 15. الدروس التطبيقية -->
-                    <a href="https://drive.google.com/drive/folders/1uBazRgXJ-0KxFLtw2iniUC9uL5eK-J5o?usp=drive_link" target="_blank" class="card-item theme-cat4">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-                                <div class="card-title">15. الدروس التطبيقية</div>
-                            </div>
-                            <div class="card-desc">جدول ومواعيد الدروس النموذجية والتطبيقية للنقل المعرفي.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>جدول الدروس</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 16. مجتمعات التعلم المهني -->
-                    <a href="https://drive.google.com/drive/folders/15Pnv8OQ5ZZWesjTUaZFQYMDb84Z1weWY?usp=drive_link" target="_blank" class="card-item theme-cat4">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-people-roof"></i></div>
-                                <div class="card-title">16. مجتمعات التعلم المهني</div>
-                            </div>
-                            <div class="card-desc">لقاءات الفرق والتخصصات لتبادل الخبرات وتطوير الممارسات التعليمية.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>متابعة اللقاءات</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 17. الزيارات التبادلية -->
-                    <a href="https://drive.google.com/drive/folders/1qlRLAC0VWDO8aTGhMP8yzo7IAwXDH2Su?usp=drive_link" target="_blank" class="card-item theme-cat4">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-right-left"></i></div>
-                                <div class="card-title">17. الزيارات التبادلية</div>
-                            </div>
-                            <div class="card-desc">توثيق وتنسيق الزيارات الصفية بين المعلمات لتبادل الخبرات.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>سجل الزيارات</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
-                    <!-- 18. سجل الإنجاز الإلكتروني -->
-                    <a href="https://drive.google.com/drive/folders/1AwSFyQ2RHGILasj9CVDmxJWWwK5dYpW6?usp=drive_link" target="_blank" class="card-item theme-cat4">
-                        <div>
-                            <div class="card-top">
-                                <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
-                                <div class="card-title">18. سجل الإنجاز الإلكتروني</div>
-                            </div>
-                            <div class="card-desc">ملفات الإنجاز الرقمية وتوثيق شواهد الأداء والمبادرات.</div>
-                        </div>
-                        <div class="card-footer-btn">
-                            <span>فتح الملفات</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </div>
-                    </a>
-
+            <div class="card theme-emerald">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h2 class="card-title">دليل خطى التفاعلي</h2>
+                </div>
+                <p class="card-description">الخريطة التفاعلية والمرشد الذكي للتعرف على مرافق المدرسة.</p>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> استكشاف الخريطة</a>
                 </div>
             </div>
 
         </div>
-
-        <div class="no-results" id="noResults">
-            لا توجد أية نتائج مطابقة لكلمة البحث.
-        </div>
-
-        <!-- Footer -->
-        <footer>
-            جميع الحقوق محفوظة © مدارس بواكير الأهلية - فرع الروابي (2026 - 2027م)
-        </footer>
-
     </div>
 
-    <!-- Live Search & Helper Scripts -->
+    <!-- Footer -->
+    <footer>
+        <p>جميع الحقوق محفوظة © مدارس بواكير الأهلية</p>
+        <p class="leadership-signature">مديرة المدرسة: أ. ريم عليوي الدوسري | إشراف وكالة الشؤون التعليمية</p>
+    </footer>
+
+    <!-- Search Script -->
     <script>
-        function filterDashboard() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toLowerCase().trim();
-            const cards = document.getElementsByClassName('card-item');
-            const groups = document.getElementsByClassName('category-group');
-            const noResults = document.getElementById('noResults');
-            let overallVisible = 0;
+        function filterCards() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
 
-            for (let i = 0; i < cards.length; i++) {
-                const title = cards[i].querySelector('.card-title').textContent || '';
-                const desc = cards[i].querySelector('.card-desc').textContent || '';
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const description = card.querySelector('.card-description').textContent.toLowerCase();
                 
-                if (title.toLowerCase().indexOf(filter) > -1 || desc.toLowerCase().indexOf(filter) > -1) {
-                    cards[i].style.display = "flex";
-                    overallVisible++;
+                if (title.includes(input) || description.includes(input)) {
+                    card.style.display = "flex";
                 } else {
-                    cards[i].style.display = "none";
+                    card.style.display = "none";
                 }
-            }
-
-            // Hide empty category groups
-            for (let j = 0; j < groups.length; j++) {
-                const visibleCards = groups[j].querySelectorAll('.card-item[style*="display: flex"]');
-                if (visibleCards.length === 0 && filter !== '') {
-                    groups[j].style.display = "none";
-                } else {
-                    groups[j].style.display = "block";
-                }
-            }
-
-            if (overallVisible === 0 && filter !== '') {
-                noResults.style.display = "block";
-            } else {
-                noResults.style.display = "none";
-            }
-        }
-
-        function toggleDetails(id) {
-            const el = document.getElementById(id);
-            if (el.style.display === "block") {
-                el.style.display = "none";
-            } else {
-                el.style.display = "block";
-            }
+            });
         }
     </script>
 </body>
